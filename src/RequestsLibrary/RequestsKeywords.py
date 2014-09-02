@@ -1,6 +1,7 @@
 import requests
 import json
 import vcr
+import httplib
 
 from urllib import urlencode
 
@@ -355,3 +356,11 @@ class RequestsKeywords(object):
         # store the last response object
         session.last_resp = resp
         return resp
+
+    def set_http_vsn(self, version):
+        if version == '1.0':
+            httplib.HTTPConnection._http_vsn = 10
+            httplib.HTTPConnection._http_vsn_str = 'HTTP/1.0'
+        elif version == '1.1':
+            httplib.HTTPConnection._http_vsn = 11
+            httplib.HTTPConnection._http_vsn_str = 'HTTP/1.1'
