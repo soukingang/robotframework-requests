@@ -1,9 +1,10 @@
 import requests
 import json
 import vcr
-import httplib
 
-from urllib import urlencode
+from http.client import HTTPConnection
+from urllib.parse import urlencode
+from builtins import str
 
 import robot
 
@@ -359,8 +360,8 @@ class RequestsKeywords(object):
 
     def set_http_vsn(self, version):
         if version == '1.0':
-            httplib.HTTPConnection._http_vsn = 10
-            httplib.HTTPConnection._http_vsn_str = 'HTTP/1.0'
+            HTTPConnection._http_vsn = 10
+            HTTPConnection._http_vsn_str = 'HTTP/1.0'
         elif version == '1.1':
-            httplib.HTTPConnection._http_vsn = 11
+            HTTPConnection._http_vsn = 11
             httplib.HTTPConnection._http_vsn_str = 'HTTP/1.1'
