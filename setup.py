@@ -1,9 +1,14 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
-
+import sys
 from os.path import abspath, dirname, join
-execfile(join(dirname(abspath(__file__)), 'src', 'RequestsLibrary', 'version.py'))
+from ez_setup import use_setuptools
+from setuptools import setup
+
+sys.path.append(join(dirname(__file__), 'src'))
+use_setuptools()
+version_file = join(dirname(__file__), 'src', 'RequestsLibrary', 'version.py')
+exec(compile(open(version_file).read(), version_file, 'exec'))
 
 DESCRIPTION = """
 Robot Framework keyword library wrapper around the HTTP client library requests.
