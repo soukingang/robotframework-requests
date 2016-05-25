@@ -24,14 +24,14 @@ class RequestsKeywords(object):
         self.builtin = BuiltIn()
 
     def _utf8_urlencode(self, data):
-        if type(data) is unicode:
+        if type(data) is str:
             return data.encode('utf-8')
 
         if not type(data) is dict:
             return data
 
         utf8_data = {}
-        for k,v in data.iteritems():
+        for k,v in data.items():
             utf8_data[k] = unicode(v).encode('utf-8')
         return urlencode(utf8_data)
 
